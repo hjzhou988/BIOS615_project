@@ -56,19 +56,19 @@ int main(int argc, const char * argv[]) {
             Z(j)=std_normal(rng);
         }
         X = L * Z + M;
-        Network(i,0)= X(0);
-        Network(i,1)=X(1);
+        Population_data(i,1)= X(0);
+        Population_data(i,2)=X(1);
         
         //Generate z;
         double z=z_normal(rng);
-        Network(i,2)=z;
+        Population_data(i,3)=z;
         
         //Gererate y;
         double y= beta_0 + beta_1 * X(0) + beta_2 * X(1);
-        Network(i,3)=y;
+        Population_data(i,0)=y;
     }
     
-    cout<< Network;
+    cout<< Population_data;
     
     
     return 0;

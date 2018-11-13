@@ -4,10 +4,18 @@
 
     Created by Huajun Zhou on 11/11/18.
     Copyright © 2018 Huajun Zhou. All rights reserved.
-
-    Compile method:
+    
+    How to install gsl library:
+    1. Go to https://www.gnu.org/software/gsl/
+    2. Download and unzip the file
+    3. move the gsl-2.5 folder to /include folder
+    4. read the INSTALL file, and follow the make install steps
+    5. Done
+    
+    How to compile:
     g++ -I/usr/local/include -L/usr/local/lib -lgsl main.cpp -o main
-    Run:
+    
+    How to run:
     ./main
 */
 

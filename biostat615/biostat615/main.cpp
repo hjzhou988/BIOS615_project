@@ -94,7 +94,7 @@ int main(int argc, const char * argv[]) {
         //row ~ Bin(n=N_sample, p=5/N_sample);
         boost::random::binomial_distribution<> bin_dist(N_sample,(double)5/N_sample);
         double num_friend = bin_dist(rng);
-        cout<<"num_friend "<<num_friend<<endl;
+        //cout<<"num_friend "<<num_friend<<endl;
 
         double p[N_sample];
         unsigned int n[N_sample];
@@ -111,12 +111,26 @@ int main(int argc, const char * argv[]) {
         const size_t K = N_sample;
         gsl_ran_multinomial(r, K, num_friend, p, n);
         for(int j=0;j<N_sample;j++){
-          Population_network(i,j)=n[j];
+          if(i!=j){
+            Population_network(i,j)=n[j];
+          }else{
+            Population_network(i,j)=0;
+          }
+
         }
 
 
     }
-    // cout<<Population_network<<endl;
+    // cout<<Population_network<<endl; //Original population_network matrix
+    Population_network = Population_network.triangularView<Upper>();
+
+    Matrix<double, Dynamic, Dynamic> network_temp;
+    network_temp = Population_network;
+    network_temp.transposeInPlace();
+
+    // Finalized symmetric network matrix with diagnol of zeros
+    Population_network += network_temp;
+    // cout<<Population_network<<endl;  //Final Population_network matrix
 
     return 0;
 }

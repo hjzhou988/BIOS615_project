@@ -23,26 +23,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A86C359D21AB445A0084E214 /* libgsl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgsl.a; path = ../../../../../../../../usr/local/lib/libgsl.a; sourceTree = "<group>"; };
 		A8E06C642198D8A5002810BA /* biostat615 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = biostat615; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E06C672198D8A5002810BA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		A8E06C612198D8A5002810BA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
+		A86C359C21AB445A0084E214 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A86C359D21AB445A0084E214 /* libgsl.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A8E06C5B2198D8A5002810BA = {
 			isa = PBXGroup;
 			children = (
 				A8E06C662198D8A5002810BA /* biostat615 */,
 				A8E06C652198D8A5002810BA /* Products */,
+				A86C359C21AB445A0084E214 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,7 +70,6 @@
 			buildConfigurationList = A8E06C6B2198D8A5002810BA /* Build configuration list for PBXNativeTarget "biostat615" */;
 			buildPhases = (
 				A8E06C602198D8A5002810BA /* Sources */,
-				A8E06C612198D8A5002810BA /* Frameworks */,
 				A8E06C622198D8A5002810BA /* CopyFiles */,
 			);
 			buildRules = (
@@ -240,7 +239,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				"HEADER_SEARCH_PATHS[arch=*]" = /usr/local/;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					/usr/local/,
+					/usr/local/include/,
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = /usr/local/lib/libgsl.a;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-I/usr/local/include",
+					"-L/usr/local/lib",
+					"-lgsl",
+					"-lgslcblas",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -249,7 +258,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				"HEADER_SEARCH_PATHS[arch=*]" = /usr/local/;
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					/usr/local/,
+					/usr/local/include/,
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = /usr/local/lib/libgsl.a;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-I/usr/local/include",
+					"-L/usr/local/lib",
+					"-lgsl",
+					"-lgslcblas",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
